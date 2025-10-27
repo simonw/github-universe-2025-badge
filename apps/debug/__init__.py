@@ -256,6 +256,10 @@ def draw_system_page():
     draw_label_value("CPU Freq:", f"{freq_mhz} MHz", 5, y)
     y += line_height
 
+    # Screen dimensions
+    draw_label_value("Screen:", f"{screen.width}x{screen.height}", 5, y)
+    y += line_height
+
     # Uptime
     draw_label_value("Uptime:", get_uptime(), 5, y)
     y += line_height

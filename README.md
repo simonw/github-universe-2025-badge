@@ -124,6 +124,7 @@ A comprehensive system information and debugging tool with 4 pages:
 - Platform information
 - MicroPython version
 - CPU frequency
+- Screen dimensions (width x height)
 - System uptime
 - Unique device ID
 
