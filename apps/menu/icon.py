@@ -3,23 +3,29 @@ from badgeware import brushes, shapes, io, Matrix, screen
 
 # bright icon colours
 bold = [
-    brushes.color(211, 250, 55),
-    brushes.color(48, 148, 255),
-    brushes.color(95, 237, 131),
-    brushes.color(225, 46, 251),
-    brushes.color(216, 189, 14),
-    brushes.color(255, 128, 210),
+    brushes.color(211, 250, 55),   # Yellow-green
+    brushes.color(48, 148, 255),   # Blue
+    brushes.color(95, 237, 131),   # Green
+    brushes.color(225, 46, 251),   # Magenta
+    brushes.color(216, 189, 14),   # Yellow
+    brushes.color(255, 128, 210),  # Pink
+    brushes.color(255, 140, 60),   # Orange
+    brushes.color(100, 200, 255),  # Cyan
+    brushes.color(180, 120, 255),  # Purple
 ]
 
 # create faded out variants for inactive icons
 fade = 1.8
 faded = [
-    brushes.color(211 / fade, 250 / fade, 55 / fade),
-    brushes.color(48 / fade, 148 / fade, 255 / fade),
-    brushes.color(95 / fade, 237 / fade, 131 / fade),
-    brushes.color(225 / fade, 46 / fade, 251 / fade),
-    brushes.color(216 / fade, 189 / fade, 14 / fade),
-    brushes.color(255 / fade, 128 / fade, 210 / fade),
+    brushes.color(211 / fade, 250 / fade, 55 / fade),   # Yellow-green
+    brushes.color(48 / fade, 148 / fade, 255 / fade),   # Blue
+    brushes.color(95 / fade, 237 / fade, 131 / fade),   # Green
+    brushes.color(225 / fade, 46 / fade, 251 / fade),   # Magenta
+    brushes.color(216 / fade, 189 / fade, 14 / fade),   # Yellow
+    brushes.color(255 / fade, 128 / fade, 210 / fade),  # Pink
+    brushes.color(255 / fade, 140 / fade, 60 / fade),   # Orange
+    brushes.color(100 / fade, 200 / fade, 255 / fade),  # Cyan
+    brushes.color(180 / fade, 120 / fade, 255 / fade),  # Purple
 ]
 
 # icon shape
@@ -82,9 +88,9 @@ class Icon:
         # draw the icon body
         squircle.transform = squircle.transform.scale(1 / 1.1, 1 / 1.1)
         if self.active:
-            screen.brush = bold[self.index]
+            screen.brush = bold[self.index % len(bold)]
         else:
-            screen.brush = faded[self.index]
+            screen.brush = faded[self.index % len(faded)]
         squircle.transform = squircle.transform.translate(-1, -1)
         screen.draw(squircle)
         squircle.transform = squircle.transform.translate(2, 2)

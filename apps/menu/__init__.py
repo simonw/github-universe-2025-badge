@@ -22,6 +22,7 @@ apps = [
     ("flappy mona", "flappy"),
     ("gallery", "gallery"),
     ("badge", "badge"),
+    ("debug info", "debug"),
 ]
 
 mona = SpriteSheet("/system/assets/mona-sprites/mona-default.png", 11, 1)
