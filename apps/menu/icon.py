@@ -53,7 +53,7 @@ class Icon:
         if active:
             Icon.active_icon = self
 
-    def draw(self):
+    def draw(self, y_offset=0):
         width = 1
         sprite_width = self.icon.width
         sprite_offset = sprite_width / 2
@@ -77,8 +77,10 @@ class Icon:
             if frame > (speed * 6):
                 self.spin = False
 
-        # transform to the icon position
-        squircle.transform = Matrix().translate(*self.pos).scale(width, 1)
+        # transform to the icon position with y_offset applied
+        pos_x = self.pos[0]
+        pos_y = self.pos[1] + y_offset
+        squircle.transform = Matrix().translate(pos_x, pos_y).scale(width, 1)
 
         # draw the icon shading
         screen.brush = shade_brush
@@ -102,8 +104,8 @@ class Icon:
             self.icon.alpha = 255 if self.active else 100
             screen.scale_blit(
                 self.icon,
-                self.pos[0] - sprite_offset - 1,
-                self.pos[1] - 13,
+                pos_x - sprite_offset - 1,
+                pos_y - 13,
                 sprite_width,
                 24,
             )

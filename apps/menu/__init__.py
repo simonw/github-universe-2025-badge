@@ -64,22 +64,31 @@ def update():
         return f"/system/apps/{apps[active][1]}"
     active %= len(icons)
 
+    # calculate scroll offset based on active icon row
+    # 3 icons per row, 48 pixels per row
+    active_row = math.floor(active / 3)
+    scroll_offset = 0
+    if active_row >= 2:
+        # scroll up by 48 pixels when on row 2 or higher
+        scroll_offset = -48 * (active_row - 1)
+
     ui.draw_background()
     ui.draw_header()
 
-    # draw menu icons
+    # draw menu icons with scroll offset
     for i in range(len(icons)):
         icons[i].activate(active == i)
-        icons[i].draw()
+        icons[i].draw(scroll_offset)
 
-    # draw label for active menu icon
+    # draw label for active menu icon with scroll offset
     if Icon.active_icon:
         label = f"{Icon.active_icon.name}"
         w, _ = screen.measure_text(label)
+        label_y = 100 + scroll_offset
         screen.brush = brushes.color(211, 250, 55)
-        screen.draw(shapes.rounded_rectangle(80 - (w / 2) - 4, 100, w + 8, 15, 4))
+        screen.draw(shapes.rounded_rectangle(80 - (w / 2) - 4, label_y, w + 8, 15, 4))
         screen.brush = brushes.color(0, 0, 0, 150)
-        screen.text(label, 80 - (w / 2), 101)
+        screen.text(label, 80 - (w / 2), label_y + 1)
 
     if alpha <= MAX_ALPHA:
         screen.brush = brushes.color(0, 0, 0, 255 - alpha)
