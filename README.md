@@ -1,5 +1,7 @@
 # BADGER - GitHub Universe 2025 Badge
 
+See https://github.com/badger/home for offical information on the badge.
+
 (Readme generated from the source code [using Claude Code](https://gistpreview.github.io/?871aaa17667c8616950c195e6eec37dc).)
 
 A custom firmware collection for the Badger2040 badge featuring multiple interactive apps and games, all starring Mona (GitHub's Octocat mascot).
